@@ -19,6 +19,7 @@
 #include "ScriptedCreature.h"
 #include "InstanceScript.h"
 #include "Player.h"
+#include "PassiveAI.h"
 #include "maw_of_souls.h"
 
 class instance_maw_of_souls : public InstanceMapScript {
@@ -123,6 +124,40 @@ class instance_maw_of_souls : public InstanceMapScript {
 		}
 };
 
+class maw_players_resurrector : public CreatureScript {
+	public:
+		maw_players_resurrector() : CreatureScript("maw_players_resurrector") {}
+		struct maw_players_resurrectorAI : public ScriptedAI {
+			maw_players_resurrectorAI(Creature* creature) : ScriptedAI(creature) {
+				instance = me->GetInstanceScript();
+				checkInterval = _checkInterval;
+			}
+
+			void UpdateAI(uint32 diff) override {
+				if(checkInterval <= diff) {
+					if(Unit* target = SelectTarget(SELECT_TARGET_RANDOM, 0, 10.0f, true)) {
+						if(!target->IsAlive()) {
+							if(Player* player = target->ToPlayer()) {
+								player->ResurrectPlayer(0.5f, false);
+							}
+						}
+					}
+					checkInterval = _checkInterval;
+				} else checkInterval -= diff;
+			}
+
+			private:
+				InstanceScript* instance;
+				uint32 _checkInterval = 1 * IN_MILLISECONDS;
+				uint32 checkInterval;
+		};
+
+		CreatureAI* GetAI(Creature* creature) const override {
+			return GetMawOfSoulsAI<maw_players_resurrectorAI>(creature);
+		}
+};
+
 void AddSC_instance_maw_of_souls() {
 	new instance_maw_of_souls();
+	new maw_players_resurrector();
 }

@@ -157,7 +157,7 @@ class boss_ymiron_maw : public CreatureScript {
 					if(createdSpheres <= allowedSpheres) {
 						createdSpheres++;
 						activeSpheres++;
-						me->SummonCreature(NPC_BANE_SPHERE, me->GetPositionX() + getRandomFloat(-5.0f, 5.0f), me->GetPositionY() + getRandomFloat(-5.0f, 5.0f), me->GetPositionZ(), 2.0f, TEMPSUMMON_DEAD_DESPAWN);
+						me->SummonCreature(NPC_BANE_SPHERE, me->GetPositionX() + getRandomFloat(-5.0f, 5.0f), me->GetPositionY() + getRandomFloat(-5.0f, 5.0f), me->GetPositionZ(), 2.0f, TEMPSUMMON_TIMED_OR_CORPSE_DESPAWN, 15 * IN_MILLISECONDS);
 					}
 				}
 
@@ -237,7 +237,6 @@ class boss_ymiron_maw : public CreatureScript {
 					healthModifier = 20;
 					damageModifier = 20;
 				}
-
 				uint64 difficultyAdjustedHealth = static_cast<unsigned long long>(myHealth * healthModifier);
 				me->SetMaxHealth(difficultyAdjustedHealth);
 				me->SetHealth(difficultyAdjustedHealth);
