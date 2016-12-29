@@ -19,7 +19,7 @@
 #define MAW_OF_SOULS_H_
 
 #define MawOfSoulsScriptName "instance_maw_of_souls"
-#define DataHeader               "MOS"
+#define DataHeader "MOS"
 
 uint32 const EncounterCount = 3;
 
