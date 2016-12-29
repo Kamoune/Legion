@@ -1,0 +1,25 @@
+Intro
+54387 The spirits grow hungry from the scent of blood.
+
+Aggro 
+54373 New passengers... New souls. I will guide you to the depths of helheim for a small price: your flesh and blood.
+54378 All who enter Helheim must pay the blood price. Resist if you wish... In the end, I always get my payment!
+
+Killed Player
+54374 Bend and break, your soul I'll take!
+54375 You see now the weakness in your mortal shell?
+54380 No one rides for free!
+54381 As I said... I always get my payment!
+54382 Another blood debt claimed... Another soul cast into the abyss.
+54383 Everyone must pay the blood price!
+
+Killed
+54376 Life... death... I am but one ripple in the eternal ebb and flow...
+54377 Now... it is I who must pay... the blood price...
+54379 Helya will make you pay... In the end, everyone pays...
+
+Spells
+54384 The flesh burdens the soul. A nuisance that must be flayed from your bones!
+54385 Spirits! Sweep these mortals into the tides!
+54386 If I cannot bleed the payment from you, the spirits will!
+54388 Arise, servitor! Claim our blood debt!

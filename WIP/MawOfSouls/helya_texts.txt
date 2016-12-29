@@ -1,0 +1,39 @@
+Intro
+54395 You ALL will regret trespassing in my realm.
+
+Aggro
+54180 You have come far enough. Time to die.
+
+Taint of the sea
+54391 Embrace your fate, fools!
+54392 Your fate rains down!
+
+Losing tentacles
+54244 You will pay for that.
+54245 I am losing my patience.
+54372 Odyn values these creatures?
+54389 No! This is not possible!
+54390 What manner of creatures ARE you??
+
+Corrupted Bellow
+54399 An eternity of agony awaits you.
+54400 I will drown you all like rats!
+54401 Hold still!
+54402 Stop squirming!
+
+Killed a player
+54393 Begone to the next life.
+54394 Your soul will not find shelter here.
+
+Wipe
+54243 It is finished. I banish your weak, mortal souls forevermore.
+
+Defeated
+54396 Do you think you have won? You have merely survived the storm... The seas are unstoppable.
+
+
+Emotions
+
+Submerged - 373
+Emerge - 449
+Submerge - 374
