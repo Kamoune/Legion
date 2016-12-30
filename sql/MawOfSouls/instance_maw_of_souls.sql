@@ -16,6 +16,8 @@ DELETE FROM `creature_template` WHERE (entry = 600000);
 INSERT INTO creature_template VALUES ('600000', '0', '0', '0', '0', '0', '1126', '11686', '0', '0', 'Maw Players Resurrector Stalker', '', '', '', '0', '110', '110', '6', '0', '0', '35', '0', '1', '0.992063', '1', '0', '0', '0', '0', '1', '1', '1', '131330', '0', '0', '0', '0', '0', '0', '10', '1024', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '', '0', '3', '1', '1', '1', '1', '1', '1', '1', '1', '0', '0', '1', '0', '0', 'maw_players_resurrector', '23222');
 
 UPDATE creature_template SET InhabitType = 5 WHERE entry = 97163;
+UPDATE gameobject_template SET ScriptName = 'legion_instance_teleporter' WHERE entry = 252145;
+
 
 SET @OGUID := 600000;
 DELETE FROM `gameobject` WHERE `guid` BETWEEN @OGUID+0 AND @OGUID+18;
@@ -125,8 +127,8 @@ INSERT INTO `creature` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `P
 (@CGUID+80, 96759, 1492, 0, 0, 8388870, '0', 0, 0, 0, 2933.499, 1055.943, 510.5183, 4.799655, 7200, 0, 0, 0, 0, 0, 0, 0, 0, 23222); -- Helya (Area: -Unknown-) (Auras: 194603 - Soulless Scream)
 
 
-UPDATE creature_template SET faction = 16, minlevel = 110, maxlevel = 110, VerifiedBuild = 23222 WHERE entry IN 
-(97163, 97043, 102896, 102108, 97200, 114712, 101013, 102375, 102104, 102894, 99188, 97365, 97097, 102769, 97119, 102830, 98919, 97182, 102742, 104906, 99307, 99033);
+UPDATE creature_template SET faction = 16, minlevel = 110, maxlevel = 111, VerifiedBuild = 23222 WHERE entry IN 
+(97163, 97043, 102896, 102108, 97200, 114712, 101013, 102375, 102104, 102894, 99188, 97365, 97097, 102769, 97119, 102830, 98919, 97182, 102742, 104906, 99307, 99033, 98693);
 UPDATE creature_template SET faction = 16, minlevel = 112, maxlevel = 112, VerifiedBuild = 23222, ScriptName = 'boss_ymiron_maw' WHERE entry = 96756;
 UPDATE creature_template SET faction = 16, minlevel = 112, maxlevel = 112, VerifiedBuild = 23222, ScriptName = 'boss_harbaron_maw' WHERE entry = 96754;
 UPDATE creature_template SET faction = 16, minlevel = 112, maxlevel = 112, VerifiedBuild = 23222, ScriptName = 'boss_helya_maw' WHERE entry = 96759;
