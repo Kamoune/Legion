@@ -1,18 +1,5 @@
 -- [NPC] Ymiron, The Fallen King -- http://www.wowhead.com/npc=96756
-SET @CREATURE_GUID := 600000;
 SET @CREATURE_ENTRY := 96756;
-SET @SPAWNMASK := 8388870;
-
-
-DELETE FROM `creature` WHERE `guid` = @CREATURE_GUID;
-INSERT INTO `creature` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `PhaseId`, `PhaseGroup`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`, `VerifiedBuild`) VALUES
-(@CREATURE_GUID, @CREATURE_ENTRY, 1492, 0, 0, @SPAWNMASK, '0', 0, 0, 0, 7407.954, 7265.255, 51.08705, 5.549542, 7200, 0, 0, 0, 0, 0, 0, 0, 0, 23222); -- Ymiron, the Fallen King (Area: -Maw Of Souls- 1492)
-
-
-DELETE FROM `creature_addon` WHERE `guid` = @CREATURE_GUID;
-INSERT INTO `creature_addon` (`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `aiAnimKit`, `movementAnimKit`, `meleeAnimKit`, `auras`) VALUES
-(@CREATURE_GUID, 0, 0, 0, 1, 0, 0, 0, 0, '');
-
 
 DELETE FROM `creature_template_addon` WHERE `entry` = @CREATURE_ENTRY;
 INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `aiAnimKit`, `movementAnimKit`, `meleeAnimKit`, `auras`) VALUES
@@ -23,8 +10,6 @@ DELETE FROM `creature_equip_template` WHERE (`CreatureID`=@CREATURE_ENTRY AND `I
 INSERT INTO `creature_equip_template` (`CreatureID`, `ID`, `ItemID1`, `ItemID2`, `ItemID3`) VALUES
 (@CREATURE_ENTRY, 1, 129189, 0, 0); -- Ymiron, the Fallen King
 
-
-UPDATE creature_template SET minlevel = 112, maxlevel = 112, ScriptName = 'boss_ymiron_maw', VerifiedBuild = 23222, faction = 16 WHERE entry = @CREATURE_ENTRY;
 UPDATE creature_template SET minlevel = 112, maxlevel = 112, ScriptName = 'npc_bane_skeleton', VerifiedBuild = 2322, faction = 16 WHERE entry = 98246;
 
 DELETE FROM `creature_text` WHERE `entry` = @CREATURE_ENTRY;
