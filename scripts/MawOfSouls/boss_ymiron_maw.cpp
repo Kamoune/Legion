@@ -83,11 +83,11 @@ class boss_ymiron_maw : public CreatureScript {
 
 			boss_ymiron_mawAI(Creature* creature) : BossAI(creature, DATA_YMIRON_MAW) {
 				instance = me->GetInstanceScript();
+				getDifficuly();
 				Initialize();
 			}
 
 			void Initialize() {
-				getDifficuly();
 				events.ScheduleEvent(EVENT_SLASH, 3.5 * IN_MILLISECONDS);
 				events.ScheduleEvent(EVENT_SCREAMS, 5.9 * IN_MILLISECONDS);
 				events.ScheduleEvent(EVENT_WINDS, 15 * IN_MILLISECONDS);
@@ -100,20 +100,35 @@ class boss_ymiron_maw : public CreatureScript {
 			void Reset() override {
 				BossAI::Reset();
 				Initialize();
-				me->SetHomePosition(YmironPositions[1]);
-				me->SetUInt32Value(UNIT_NPC_EMOTESTATE, 16);
-				instance->SetBossState(DATA_YMIRON_MAW, NOT_STARTED);
+				events.Reset();
+				instance->SetBossState(DATA_YMIRON_MAW, FAIL);
 			}
 
-			void EnterCombat(Unit* /*who*/) {
-				DoZoneInCombat();
+			void EnterCombat(Unit* who) {
+				BossAI::EnterCombat(who);
 				Talk(YELL_ENTER_COMBAT);
 				instance->SetBossState(DATA_YMIRON_MAW, IN_PROGRESS);
 			}
 
-			void JustDied(Unit* /*killer*/) override {
+			void JustDied(Unit* killer) override {
+				BossAI::JustDied(killer);
 				Talk(YELL_KILLED);
 				instance->SetBossState(DATA_YMIRON_MAW, DONE);
+			}
+
+			void JustReachedHome() override {
+				BossAI::JustReachedHome();
+				me->SetUInt32Value(UNIT_NPC_EMOTESTATE, 16);
+			}
+
+			void EnterEvadeMode(EvadeReason why) override {
+				BossAI::EnterEvadeMode(why);
+				instance->SetBossState(DATA_YMIRON_MAW, FAIL);
+				me->SetHomePosition(YmironPositions[1]);
+				me->CombatStop();
+				me->RemoveAllAuras();
+				events.Reset();
+				Initialize();
 			}
 
 			void KilledUnit(Unit* victim) override {
@@ -148,7 +163,7 @@ class boss_ymiron_maw : public CreatureScript {
 					return;
 
 				if(me->GetDistance(me->GetHomePosition()) > 120.0f) {
-					EnterEvadeMode();
+					EnterEvadeMode(EVADE_REASON_BOUNDARY);
 					return;
 				}
 
