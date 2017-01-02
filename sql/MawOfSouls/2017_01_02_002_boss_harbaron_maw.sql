@@ -1,7 +1,7 @@
 -- [NPC] Harbaron -- http://www.wowhead.com/npc=96754
 SET @CREATURE_ENTRY := 96754;
 
-UPDATE creature_template SET ScriptName = 'npc_shackled_servitor' WHERE entry = 98693;
+UPDATE creature_template SET faction = 14, minlevel = 110, maxlevel = 111, ScriptName = 'npc_shackled_servitor' WHERE entry = 98693;
 
 DELETE FROM `creature_text` WHERE `entry` = @CREATURE_ENTRY;
 INSERT INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextId`, `comment`) VALUES

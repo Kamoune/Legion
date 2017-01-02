@@ -1,16 +1,7 @@
 -- [NPC] Ymiron, The Fallen King -- http://www.wowhead.com/npc=96756
 SET @CREATURE_ENTRY := 96756;
 
-DELETE FROM `creature_template_addon` WHERE `entry` = @CREATURE_ENTRY;
-INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `aiAnimKit`, `movementAnimKit`, `meleeAnimKit`, `auras`) VALUES
-(@CREATURE_ENTRY, 0, 0, 0, 1, 0, 0, 0, 0, '');  -- 96756 (Ymiron, the Fallen King)
-
-
-DELETE FROM `creature_equip_template` WHERE (`CreatureID`=@CREATURE_ENTRY AND `ID`=1);
-INSERT INTO `creature_equip_template` (`CreatureID`, `ID`, `ItemID1`, `ItemID2`, `ItemID3`) VALUES
-(@CREATURE_ENTRY, 1, 129189, 0, 0); -- Ymiron, the Fallen King
-
-UPDATE creature_template SET minlevel = 112, maxlevel = 112, ScriptName = 'npc_bane_skeleton', VerifiedBuild = 2322, faction = 16 WHERE entry = 98246;
+UPDATE creature_template SET minlevel = 112, maxlevel = 112, ScriptName = 'npc_bane_skeleton', VerifiedBuild = 2322, faction = 14 WHERE entry = 98246;
 
 DELETE FROM `creature_text` WHERE `entry` = @CREATURE_ENTRY;
 INSERT INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextId`, `comment`) VALUES
